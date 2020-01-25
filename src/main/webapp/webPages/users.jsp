@@ -28,7 +28,7 @@
             out.println("<div class=\"w3-panel w3-green w3-display-container w3-card-4 w3-round\">\n" +
                     "   <span onclick=\"this.parentElement.style.display='none'\"\n" +
                     "   class=\"w3-button w3-margin-right w3-display-right w3-round-large w3-hover-green w3-border w3-border-green w3-hover-border-grey\">×</span>\n" +
-                    "   <h5>User" + request.getAttribute("status") + " was updated </h5>\n" +
+                    "   <h5>User " + request.getAttribute("status") + " was updated </h5>\n" +
                     "</div>");
         }
         else if (request.getAttribute("error") != null) {
@@ -54,7 +54,7 @@
                     + "            </label>\n"
                     + "            <label>Password:\n"
                     + "                <input type=\"password\" name=\"userPassword\" class=\"w3-input w3-animate-input w3-border w3-round-large\" style=\"width: 30%\"\n"
-                    + "                       value='"+ request.getAttribute("userPassword") +"'><br />\n"
+                    + "                       value='"+request.getAttribute("userPassword")+"'><br />\n"
                     + "            </label>\n"
                     + "            <button type=\"submit\" class=\"w3-btn w3-green w3-round-large w3-margin-bottom\">Submit</button>\n"
                     + "        </form>"

@@ -9,6 +9,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
+
 @Entity
 @Table(name = "users")
 public class User {
@@ -49,29 +52,36 @@ public class User {
         return this;
     }
 
-    @Override
-    public boolean equals(Object o) {
+    @Override public boolean equals(Object o) {
         if (this == o)
             return true;
-        if (o == null || getClass() != o.getClass())
+
+        if (!(o instanceof User))
             return false;
+
         User user = (User) o;
-        return Objects.equals(name, user.name) &&
-                Objects.equals(password, user.password);
+
+        return new EqualsBuilder()
+                .append(id, user.id)
+                .append(name, user.name)
+                .append(password, user.password)
+                .isEquals();
     }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(name, password);
+    @Override public int hashCode() {
+        return new HashCodeBuilder(17, 37)
+                .append(id)
+                .append(name)
+                .append(password)
+                .toHashCode();
     }
 
-    @Override
-    public String toString() {
+    @Override public String toString() {
         return "User{" +
-                "name='" + name + '\'' +
-                ", password='" + password + '\'' +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", pass='" + password.hashCode() + '\'' +
                 '}';
     }
-
 }
 
