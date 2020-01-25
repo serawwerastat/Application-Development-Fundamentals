@@ -1,4 +1,4 @@
-package com.api_dev_fundamentals.APIDevFundamentals.models;
+package com.fundamentals.models;
 
 import java.util.Objects;
 

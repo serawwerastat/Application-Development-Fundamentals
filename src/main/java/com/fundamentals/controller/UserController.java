@@ -1,6 +1,7 @@
-package com.api_dev_fundamentals.APIDevFundamentals.controller;
+package com.fundamentals.controller;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 import javax.servlet.http.HttpServletRequest;
@@ -12,8 +13,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.api_dev_fundamentals.APIDevFundamentals.models.User;
-import com.api_dev_fundamentals.APIDevFundamentals.repositories.UserRepository;
+import com.fundamentals.repositories.UserRepository;
+import com.fundamentals.models.User;
 
 @Controller
 public class UserController {
@@ -101,11 +102,19 @@ public class UserController {
 
     @PostMapping(value = "/users")
     public String updateUser(HttpServletRequest request, HttpServletResponse response) {
-        User user = userRepository.findById(Integer.valueOf(request.getParameter(USER_ID_ATTRIBUTE))).get();
-        user.setPassword(request.getParameter(USER_PASS_ATTRIBUTE));
-        user.setName(request.getParameter(USER_NAME_ATTRIBUTE));
-        userRepository.save(user);
-        request.setAttribute("status", user.getName());
+        Optional<User> user = userRepository.findById(Integer.valueOf(request.getParameter(USER_ID_ATTRIBUTE)));
+        User foundUser;
+        if(user.isPresent()){
+            foundUser = user.get();
+        }
+        else {
+            request.setAttribute(ERROR_ATTRIBUTE, String.format("User with ID %s does not exist", request.getParameter(USER_ID_ATTRIBUTE)));
+            return FIND_USER_PAGE;
+        }
+        foundUser.setPassword(request.getParameter(USER_PASS_ATTRIBUTE));
+        foundUser.setName(request.getParameter(USER_NAME_ATTRIBUTE));
+        userRepository.save(foundUser);
+        request.setAttribute("status", foundUser.getName());
         return FIND_USER_PAGE;
     }
 }

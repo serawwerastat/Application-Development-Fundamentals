@@ -1,5 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
     <title>Add new user</title>
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
