@@ -24,11 +24,7 @@ brew services stop jenkins-lts
 
 Sonar command for report -- https://sonarcloud.io/projects
 ===============================
-mvn sonar:sonar \
-  -Dsonar.projectKey=serawwerastat.Application-Development-Fundamentals \
-  -Dsonar.organization=serawwerastat \
-  -Dsonar.host.url=https://sonarcloud.io \
-  -Dsonar.login=???
+https://dzone.com/articles/sonarcloud-integration-with-springboot-maven
 
 
 Maven job
