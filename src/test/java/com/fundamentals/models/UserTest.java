@@ -4,7 +4,6 @@ import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 
 import org.junit.jupiter.api.Test;
-import org.springframework.boot.test.context.SpringBootTest;
 
 public class UserTest {
 
@@ -15,7 +14,7 @@ public class UserTest {
     private int userId = 314;
 
     @Test
-    public void equalsTest(){
+    public void equalsTest() {
         user1 = new User()
                 .setName(userName)
                 .setPassword(userPass)
@@ -28,7 +27,7 @@ public class UserTest {
     }
 
     @Test
-    public void hashCodeTest(){
+    public void hashCodeTest() {
         user1 = new User()
                 .setName(userName)
                 .setPassword(userPass)
@@ -41,12 +40,12 @@ public class UserTest {
     }
 
     @Test
-    public void toStringTest(){
+    public void toStringTest() {
         user1 = new User()
                 .setName(userName)
                 .setPassword(userPass)
                 .setId(userId);
-        String toString = String.format("User{id=%s, name='%s', pass='%d'}",userId,userName,userPass.hashCode());
+        String toString = String.format("User{id=%s, name='%s', pass='%d'}", userId, userName, userPass.hashCode());
         assertThat(user1.toString(), is(toString));
     }
 }
