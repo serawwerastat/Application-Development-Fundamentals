@@ -72,7 +72,6 @@ public class UserController {
         }
         User user = new User().setName(name).setPassword(password);
         userRepository.save(user);
-        LOG.info("User was added. " + user);
         request.setAttribute(USER_NAME_ATTRIBUTE, name);
         return ADD_PAGE;
     }
@@ -137,7 +136,6 @@ public class UserController {
         foundUser.setPassword(request.getParameter(USER_PASS_ATTRIBUTE));
         foundUser.setName(request.getParameter(USER_NAME_ATTRIBUTE));
         userRepository.save(foundUser);
-        LOG.info("User was updated. New " + foundUser);
         request.setAttribute("status", foundUser.getName());
         return FIND_USER_PAGE;
     }
