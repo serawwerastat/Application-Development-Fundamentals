@@ -13,7 +13,7 @@ Assignment Requirements
 -  You should provide a presentation showing a Sonar report on the test coverage and code quality in your app and explaining the idea you&#39;ve picked and implemented
 -  You should have at least 3 commits per preson on InnerSource repository for  your app.
 
-MAC setup
+MAC setup 
 ====================
 brew install jenkins-lts
 brew services start jenkins-lts
